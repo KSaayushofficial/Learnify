@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,8 +22,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { ModeToggle } from "@/components/shared/mode-toggle"
+} from "@/components/ui/navigation-menu";
+import { ModeToggle } from "@/components/shared/mode-toggle";
 import {
   GraduationCap,
   BookOpen,
@@ -40,20 +40,20 @@ import {
   Globe,
   Bell,
   Briefcase,
-} from "lucide-react"
+} from "lucide-react";
 
 export function SiteHeader() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     {
@@ -86,9 +86,9 @@ export function SiteHeader() {
       icon: <MessageSquare className="h-4 w-4 mr-2" />,
       description: "Connect with other students",
     },
-  ]
+  ];
 
-  const isActive = (path) => pathname === path
+  const isActive = (path: string) => pathname === path;
 
   return (
     <header
@@ -105,7 +105,11 @@ export function SiteHeader() {
             <motion.div
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
               className="size-8 rounded-full bg-primary/10 flex items-center justify-center"
             >
               <GraduationCap className="h-5 w-5 text-primary" />
@@ -122,7 +126,8 @@ export function SiteHeader() {
                       className={cn(
                         navigationMenuTriggerStyle(),
                         "rounded-full",
-                        isActive(item.href) && "bg-primary/10 text-primary font-medium"
+                        isActive(item.href) &&
+                          "bg-primary/10 text-primary font-medium"
                       )}
                     >
                       {item.icon}
@@ -150,7 +155,8 @@ export function SiteHeader() {
                             AI-Powered Learning
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Enhance your learning experience with our advanced AI tools designed specifically for Nepali students.
+                            Enhance your learning experience with our advanced
+                            AI tools designed specifically for Nepali students.
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -160,10 +166,13 @@ export function SiteHeader() {
                         <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                           <div className="flex items-center gap-2">
                             <Zap className="h-4 w-4 text-primary" />
-                            <div className="text-sm font-medium">AI Question Generator</div>
+                            <div className="text-sm font-medium">
+                              AI Question Generator
+                            </div>
                           </div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Generate custom practice questions based on your needs
+                            Generate custom practice questions based on your
+                            needs
                           </p>
                         </NavigationMenuLink>
                       </Link>
@@ -173,7 +182,9 @@ export function SiteHeader() {
                         <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                           <div className="flex items-center gap-2">
                             <MessageSquare className="h-4 w-4 text-primary" />
-                            <div className="text-sm font-medium">AI Study Assistant</div>
+                            <div className="text-sm font-medium">
+                              AI Study Assistant
+                            </div>
                           </div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Get instant answers to your study questions
@@ -186,7 +197,9 @@ export function SiteHeader() {
                         <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                           <div className="flex items-center gap-2">
                             <Globe className="h-4 w-4 text-primary" />
-                            <div className="text-sm font-medium">Knowledge Network</div>
+                            <div className="text-sm font-medium">
+                              Knowledge Network
+                            </div>
                           </div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Visualize connections between concepts
@@ -205,7 +218,11 @@ export function SiteHeader() {
           <div className="hidden md:flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="rounded-full relative">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full relative"
+                >
                   <Bell className="h-4 w-4" />
                   <span className="sr-only">Notifications</span>
                   <span className="absolute -top-1 -right-1 size-3 bg-red-500 rounded-full"></span>
@@ -215,16 +232,26 @@ export function SiteHeader() {
                 <div className="p-2 font-medium border-b">Notifications</div>
                 <div className="py-2 px-3 text-sm">
                   <div className="mb-2 pb-2 border-b">
-                    <div className="font-medium">New practice questions available</div>
-                    <div className="text-muted-foreground text-xs">5 minutes ago</div>
+                    <div className="font-medium">
+                      New practice questions available
+                    </div>
+                    <div className="text-muted-foreground text-xs">
+                      5 minutes ago
+                    </div>
                   </div>
                   <div className="mb-2 pb-2 border-b">
                     <div className="font-medium">Your exam is in 3 days</div>
-                    <div className="text-muted-foreground text-xs">2 hours ago</div>
+                    <div className="text-muted-foreground text-xs">
+                      2 hours ago
+                    </div>
                   </div>
                   <div>
-                    <div className="font-medium">AI has generated new study recommendations</div>
-                    <div className="text-muted-foreground text-xs">Yesterday</div>
+                    <div className="font-medium">
+                      AI has generated new study recommendations
+                    </div>
+                    <div className="text-muted-foreground text-xs">
+                      Yesterday
+                    </div>
                   </div>
                 </div>
               </DropdownMenuContent>
@@ -253,9 +280,7 @@ export function SiteHeader() {
                   My Courses
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  Log out
-                </DropdownMenuItem>
+                <DropdownMenuItem>Log out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Button className="rounded-full">
@@ -270,7 +295,11 @@ export function SiteHeader() {
             className="md:hidden rounded-full"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
             <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
@@ -288,8 +317,8 @@ export function SiteHeader() {
             <div className="container py-4 space-y-4">
               <div className="grid gap-2">
                 {navItems.map((item) => (
-                  <Link 
-                    key={item.href} 
+                  <Link
+                    key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -297,10 +326,78 @@ export function SiteHeader() {
                       variant="ghost"
                       className={cn(
                         "w-full justify-start rounded-lg",
-                        isActive(item.href) && "bg-primary/10 text-primary font-medium"
+                        isActive(item.href) &&
+                          "bg-primary/10 text-primary font-medium"
                       )}
                     >
                       {item.icon}
                       {item.title}
-                      <ChevronRight className="h-4 w-4 ml-auto\
+                      <ChevronRight className="h-4 w-4 ml-auto" />
+                    </Button>
+                  </Link>
+                ))}
+              </div>
 
+              <div className="pt-4 border-t">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start rounded-lg"
+                >
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  AI Features
+                  <ChevronRight className="h-4 w-4 ml-auto" />
+                </Button>
+              </div>
+
+              <div className="pt-4 border-t">
+                <div className="flex items-center justify-between gap-2">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full"
+                  >
+                    <Bell className="h-4 w-4" />
+                  </Button>
+                  <ModeToggle />
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                      >
+                        <User className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <User className="h-4 w-4 mr-2" />
+                        Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <LayoutDashboard className="h-4 w-4 mr-2" />
+                        Dashboard
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <BookOpen className="h-4 w-4 mr-2" />
+                        My Courses
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Log out</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <Button className="rounded-full flex-1">
+                    <GraduationCap className="h-4 w-4 mr-2" />
+                    Start
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
